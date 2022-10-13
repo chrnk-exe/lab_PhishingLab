@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router';
 import Login from './Login';
 import App from './App';
 import NotFound from './NotFound';
+import { useAppSelector } from '../store/hooks';
 
 const AppRoutes = () => {
-	const [user, setUser] = useState<User>(
-		JSON.parse(window.sessionStorage.getItem('user') as string) as User || {
-			email: null,
-			password: null,
-		}
-	);
+	const user = useAppSelector(state => state.user);
 
 	return (
 		<div>
@@ -27,12 +23,12 @@ const AppRoutes = () => {
 				/>
 				<Route
 					path={'/login'}
-					element={<Login user={user} setUser={setUser} />}
+					element={<Login/>}
 				/>
 				<Route
 					path={'/app'}
 					element={
-						user.email ? <App user={user} /> : <Navigate to={'/login'} />
+						user.email ? <App /> : <Navigate to={'/login'} />
 					}
 				/>
 				<Route path="*" element={<NotFound redirToApp={user.email ? true : false}/>} />

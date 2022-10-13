@@ -3,15 +3,13 @@ import classes from '../styles/Login.module.sass';
 import { TextField } from '@mui/material';
 import { Paper, Button } from '@mui/material';
 import { useNavigate } from 'react-router';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 import TextFieldPassword from './TextFieldPassword';
+import {setUserEmail, setUserPassword} from '../store/slices/userSlice';
 
-const Login = ({
-	user,
-	setUser,
-}: {
-  user: User;
-  setUser: React.Dispatch<React.SetStateAction<User>>;
-}) => {
+const Login = () => {
+	const user = useAppSelector(state => state.user);
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const loginHandler = () => {
@@ -35,12 +33,12 @@ const Login = ({
 						label={'Email'}
 						required
 						onChange={(e) =>
-							setUser((prev) => ({ ...prev, email: e.target.value }))
+							dispatch(setUserEmail(e.target.value))
 						}
 					/>
 					<TextFieldPassword
 						onChangeEventFunction={(e) =>
-							setUser((prev) => ({ ...prev, password: e.target.value }))
+							dispatch(setUserPassword(e.target.value))
 						}
 						required
 						value={user.password || ''}
