@@ -10,10 +10,11 @@ declare interface Message {
     id: number;
     subject: string;
     from: string;
+    sender: string;
     to: string | null;
     avatar?: string;
     text: string;
-    date: Date,
+    date: string,
 
     read: boolean;
     favorite: boolean,

@@ -5,8 +5,8 @@ import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
+import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import formatDate from '../formatDate';
 
 const MessageItem = ({
 	id,
@@ -14,41 +14,50 @@ const MessageItem = ({
 	from,
 	read,
 	date,
-	avatar,
-	text
+	avatar
 }: {
 	id: number;
 	subject: string;
 	from: string;
 	read: boolean;
-	date: Date;
+	date: string;
 	avatar: string;
-	text: string;
+	text?: string;
 }) => {
 	const message = useAppSelector(state =>
 		state.messages.find(message => message.id === id),
 	);
 
+	const navigate = useNavigate();
+
+	
+
 	return (
-		<Button fullWidth>
+		<Button fullWidth onClick={() => navigate(`/app/${id}`)}>
 			<div className={classes.messageItem}>
-				<div>
-					{read ? <CircleRoundedIcon /> : <CircleOutlinedIcon />}
+				<div className={classes.content}>
+					<div>
+						{!read ? <CircleRoundedIcon /> : <CircleOutlinedIcon />}
+					</div>
+					<div>
+						<img src={avatar} width={45} alt="" />
+					</div>
+					<div className={classes.from}>{from}</div>
+					<div>
+						{!message?.favorite ? (
+							<BookmarkBorderRoundedIcon />
+						) : (
+							<BookmarkRoundedIcon />
+						)}
+					</div>
+					<div>{subject}</div>
+					{/* <div>{text}</div> */}
 				</div>
+				
 				<div>
-					<img src={avatar} height={45} width={45} alt="" />
+					<div className={classes.msgDate}>{date}</div>
+					
 				</div>
-				<div>{from}</div>
-				<div>
-					{message?.favorite ? (
-						<BookmarkBorderRoundedIcon />
-					) : (
-						<BookmarkRoundedIcon />
-					)}
-				</div>
-				<div>{subject}</div>
-				<div>{text}</div>
-				<div className={classes.msgDate}>{formatDate(date)}</div>
 			</div>
 		</Button>
 	);

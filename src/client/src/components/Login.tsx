@@ -43,7 +43,7 @@ const Login = () => {
 						required
 						value={user.password || ''}
 					/>
-					<Button onClick={loginHandler}>Log in</Button>
+					<Button variant="contained" onClick={loginHandler}>Log in</Button>
 				</form>
 			</Paper>
 		</div>
