@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from 'react-router';
 import Login from './Login';
 import App from './App';
 import NotFound from './NotFound';
-import MessageItem from './MessageItem';
 import Message from './Message';
-import classes from '../styles/App.module.sass';
 import { useAppSelector } from '../store/hooks';
+import FilteredMessagesBy from './FilteredMessagesBy';
+import boxStates from '../boxStates';
 
 const AppRoutes = () => {
 	const user = useAppSelector(state => state.user);
@@ -29,28 +29,30 @@ const AppRoutes = () => {
 				<Route
 					path={'/app'}
 					element={
-						user.email ? <App /> : <Navigate to={'/login'} />
+						user.email ? (
+							<App />
+						) : (
+							<Navigate to={'/login'} />
+						)
 					}>
 					<Route
 						index
-						element={
-							<section id={classes.messages}>
-								{messages.map(item => (
-									<MessageItem 
-										key={item.id} 
-										id={item.id}
-										subject={item.subject} 
-										from={item.from}
-										read={item.read}
-										date={item.date}
-										avatar={item.avatar || ''}
-										text={item.text}
-									/>
-								))}
-							</section>
-						}
+						element={<FilteredMessagesBy messages={messages} />}
 					/>
-					<Route path={':messageId'} element={<Message />}/>
+					<Route path={':messageId'} element={<Message />} />
+
+					{boxStates.map(boxState => (
+						<Route
+							key={boxState}
+							path={boxState}
+							element={
+								<FilteredMessagesBy
+									filterArg={boxState}
+									messages={messages}
+								/>
+							}
+						/>
+					))}
 				</Route>
 				<Route
 					path="*"

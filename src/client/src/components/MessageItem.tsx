@@ -6,7 +6,7 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
 import { useNavigate } from 'react-router';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../store/hooks';
 
 const MessageItem = ({
 	id,
@@ -53,10 +53,8 @@ const MessageItem = ({
 					<div>{subject}</div>
 					{/* <div>{text}</div> */}
 				</div>
-				
 				<div>
 					<div className={classes.msgDate}>{date}</div>
-					
 				</div>
 			</div>
 		</Button>

@@ -10,7 +10,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import Header from './Header';
 import MessageCount from './MessageCount';
 import { useAppSelector } from '../store/hooks';
-import { useParams, Outlet } from 'react-router';
+import { Outlet } from 'react-router';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -18,21 +18,49 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import { useNavigate } from 'react-router';
 
+const enum AppActions {
+    Compose = 1,
+    Inbox,
+    Favorites,
+    Sent,
+    Trash,
+    Spam,
+    Drafts
+}
+
 function App() {
 	const messages = useAppSelector(state => state.messages);
 	const [selected, setSelected] = useState(1);
-	const route = useParams();
 	const navigate = useNavigate();
-
-	const inboxHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		handleListItemClick(e, 2);
-		navigate('/app');
-	};
 
 	const handleListItemClick = (
 		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
 		index: number,
 	) => {
+		switch (index) {
+		case AppActions.Compose:
+			break;
+		case AppActions.Inbox:
+			navigate('/app');
+			break;
+		case AppActions.Favorites:
+			navigate('/app/favorite');
+			break;
+		case AppActions.Drafts:
+			navigate('/app/drafts');
+			break;
+		case AppActions.Sent:
+			navigate('/app/sent');
+			break;
+		case AppActions.Spam:
+			navigate('/app/spam');
+			break;
+		case AppActions.Trash:
+			navigate('/app/trash');
+			break;
+		default:
+			break;
+		}
 		setSelected(index);
 	};
 
@@ -45,8 +73,8 @@ function App() {
 						<List className={classes.list}>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 1}
-									onClick={e => handleListItemClick(e, 1)}>
+									selected={selected === AppActions.Compose}
+									onClick={e => handleListItemClick(e, AppActions.Compose)}>
 									<ListItemIcon>
 										<CreateIcon />
 									</ListItemIcon>
@@ -54,9 +82,9 @@ function App() {
 								</ListItemButton>
 							</ListItem>
 							<ListItem>
-								<ListItemButton 
-									selected={selected === 2}
-									onClick={inboxHandler}>
+								<ListItemButton
+									selected={selected === AppActions.Inbox}
+									onClick={e => handleListItemClick(e, AppActions.Inbox)}>
 									<ListItemIcon>
 										<MessageCount messages={messages} />
 									</ListItemIcon>
@@ -65,8 +93,8 @@ function App() {
 							</ListItem>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 3}
-									onClick={e => handleListItemClick(e, 3)}>
+									selected={selected === AppActions.Favorites}
+									onClick={e => handleListItemClick(e, AppActions.Favorites)}>
 									<ListItemIcon>
 										<BookmarksIcon />
 									</ListItemIcon>
@@ -75,8 +103,8 @@ function App() {
 							</ListItem>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 4}
-									onClick={e => handleListItemClick(e, 4)}>
+									selected={selected === AppActions.Sent}
+									onClick={e => handleListItemClick(e, AppActions.Sent)}>
 									<ListItemIcon>
 										<SendIcon />
 									</ListItemIcon>
@@ -85,8 +113,8 @@ function App() {
 							</ListItem>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 5}
-									onClick={e => handleListItemClick(e, 5)}>
+									selected={selected === AppActions.Trash}
+									onClick={e => handleListItemClick(e, AppActions.Trash)}>
 									<ListItemIcon>
 										<DeleteIcon />
 									</ListItemIcon>
@@ -95,8 +123,8 @@ function App() {
 							</ListItem>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 6}
-									onClick={e => handleListItemClick(e, 6)}>
+									selected={selected === AppActions.Spam}
+									onClick={e => handleListItemClick(e, AppActions.Spam)}>
 									<ListItemIcon>
 										<ThumbDownAltIcon />
 									</ListItemIcon>
@@ -105,8 +133,8 @@ function App() {
 							</ListItem>
 							<ListItem>
 								<ListItemButton
-									selected={selected === 7}
-									onClick={e => handleListItemClick(e, 7)}>
+									selected={selected === AppActions.Drafts}
+									onClick={e => handleListItemClick(e, AppActions.Drafts)}>
 									<ListItemIcon>
 										<DraftsIcon />
 									</ListItemIcon>

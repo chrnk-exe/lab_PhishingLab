@@ -27,9 +27,9 @@ const NotFound = ({redirToApp} : {redirToApp: boolean}) => {
 				<CircularProgress size={140} color="primary" variant="determinate" value={timer * 20}/>
 				<div className={classes.notFoundMessage}>Page not found. Redirect in: {timer} seconds</div>
 				{
-					timer === 0 ? <Navigate to={redirToApp ? '/app' : '/login'} replace/> : null
+					timer === 0 ? <Navigate to={redirToApp ? '/' : '/'} replace/> : null
 				}  
-				<Link replace to={'/login'}>Click here to redirect now</Link>                 
+				<Link replace to={'/'}>Click here to redirect now</Link>                 
 			</div>
 		</div>
 	);

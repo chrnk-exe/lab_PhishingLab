@@ -11,6 +11,7 @@ interface Props {
   label?: string
   className?: string
   required?: boolean
+  error?: boolean
 }
 
 const TextFieldPassword = (props: Props) => {
@@ -35,6 +36,7 @@ const TextFieldPassword = (props: Props) => {
 			fullWidth
 			label={props.label || 'Password'}
 			rows={1}
+			error={props.error}
 			variant="outlined"
 			value={props.value}
 			type={showPassword ? 'text' : 'password'}
