@@ -6,7 +6,8 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
 import { useNavigate } from 'react-router';
-import { useAppSelector } from '../store/hooks';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { markRead } from '../store/slices/messageSlice';
 
 const MessageItem = ({
 	id,
@@ -22,18 +23,24 @@ const MessageItem = ({
 	read: boolean;
 	date: string;
 	avatar: string;
-	text?: string;
 }) => {
 	const message = useAppSelector(state =>
 		state.messages.find(message => message.id === id),
 	);
 
+	const dispatch = useAppDispatch();
+
 	const navigate = useNavigate();
+
+	const onMessageClickHandler = () => {
+		dispatch(markRead(id));
+		navigate(`/app/${id}`);
+	};
 
 	
 
 	return (
-		<Button fullWidth onClick={() => navigate(`/app/${id}`)}>
+		<Button fullWidth onClick={onMessageClickHandler}>
 			<div className={classes.messageItem}>
 				<div className={classes.content}>
 					<div>

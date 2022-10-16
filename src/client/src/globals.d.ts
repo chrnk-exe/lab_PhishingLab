@@ -12,13 +12,13 @@ declare interface Message {
 	from: string;
 	sender: string;
 	to: string | null;
-	avatar?: string;
-	text: string;
+	payload: string;
 	date: string;
-
+	type: BoxState;
 	read: boolean;
 	favorite: boolean;
-	type: BoxState;
+    
+	avatar?: string;
 }
 
 declare type BoxState =

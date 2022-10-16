@@ -24,7 +24,6 @@ const FilteredMessagesBy = ({
 							read={item.read}
 							date={item.date}
 							avatar={item.avatar || ''}
-							text={item.text}
 						/>
 						<div onClick={e => e.stopPropagation()}>
 							<MessageItemMenu id={item.id} />
@@ -48,7 +47,6 @@ const FilteredMessagesBy = ({
 						read={item.read}
 						date={item.date}
 						avatar={item.avatar || ''}
-						text={item.text}
 					/>
 					<div onClick={e => e.stopPropagation()}>
 						<MessageItemMenu id={item.id} />

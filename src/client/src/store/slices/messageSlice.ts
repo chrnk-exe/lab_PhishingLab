@@ -42,9 +42,28 @@ export const messagesSlice = createSlice({
 				} else return message;
 			});
 		},
+		markRead: (state, action: PayloadAction<number>) => {
+			return state.map(message => {
+				if (message.id === action.payload) {
+					return {
+						...message,
+						read: true,
+					};
+				} else return message;
+			});
+		},
+		markAllAsRead: (state) => {
+			return state.map(message => ({ ...message, read: true }));
+		}
 	},
 });
 
-export const { setMessages, addToSpam, addToFavorites, addToTrash } =
-	messagesSlice.actions;
+export const {
+	setMessages,
+	addToSpam,
+	addToFavorites,
+	addToTrash,
+	markRead,
+	markAllAsRead,
+} = messagesSlice.actions;
 export default messagesSlice.reducer;
