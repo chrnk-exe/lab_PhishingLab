@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import classes from '../styles/App.module.sass';
+import { useAppSelector } from '../store/hooks';
+import MessageCount from './MessageCount';
+
+import { Outlet, useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
+import Header from './Header';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+
 import CreateIcon from '@mui/icons-material/Create';
-import Header from './Header';
-import MessageCount from './MessageCount';
-import { useAppSelector } from '../store/hooks';
-import { Outlet } from 'react-router';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import { useNavigate } from 'react-router';
 
 const enum AppActions {
     Compose = 1,

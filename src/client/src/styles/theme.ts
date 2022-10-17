@@ -9,7 +9,8 @@ export enum COLORS {
     spring_green = '#00FF7F',
     mint_green   = '#98FB98',
     light_green  = '#90EE90',
-    white        = '#FFFFF1'
+    white        = '#FFFFF1',
+	gray         = 'rgba(0, 0, 0, 0.87)'
 }
 
 export default responsiveFontSizes(
@@ -20,6 +21,9 @@ export default responsiveFontSizes(
 			},
 			secondary: {
 				main: COLORS.white
+			},
+			warning: {
+				main: COLORS.gray
 			}
 		}
 	})

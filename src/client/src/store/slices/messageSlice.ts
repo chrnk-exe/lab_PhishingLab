@@ -52,6 +52,16 @@ export const messagesSlice = createSlice({
 				} else return message;
 			});
 		},
+		markUnread: (state, action: PayloadAction<number>) => {
+			return state.map(message => {
+				if (message.id === action.payload){
+					return {
+						...message,
+						read: false,
+					};
+				} else return message;
+			});
+		},
 		markAllAsRead: (state) => {
 			return state.map(message => ({ ...message, read: true }));
 		}
@@ -65,5 +75,6 @@ export const {
 	addToTrash,
 	markRead,
 	markAllAsRead,
+	markUnread
 } = messagesSlice.actions;
 export default messagesSlice.reducer;
