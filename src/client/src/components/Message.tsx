@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { Button } from '@mui/material';
@@ -27,10 +27,16 @@ const Message = () => {
 		return (
 			<div className={classes.message}>
 				<div className={classes.messageMenu}>
-					<Button color="warning" startIcon={<ReplyIcon />} href={'#'}>
+					<Button
+						color="warning"
+						startIcon={<ReplyIcon />}
+						href={'#'}>
 						Reply
 					</Button>
-					<Button color="warning" startIcon={<ShortcutIcon />} href={'#'}>
+					<Button
+						color="warning"
+						startIcon={<ShortcutIcon />}
+						href={'#'}>
 						Forward
 					</Button>
 					<Button
@@ -39,22 +45,30 @@ const Message = () => {
 						onClick={() => dispatch(addToSpam(message.id))}>
 						Spam!
 					</Button>
-					<Button color="warning" startIcon={<DeleteIcon />} onClick={() => dispatch(addToTrash(message.id))}>
+					<Button
+						color="warning"
+						startIcon={<DeleteIcon />}
+						onClick={() => dispatch(addToTrash(message.id))}>
 						Delete
 					</Button>
-					<Button color="warning" onClick={() => dispatch(markUnread(message.id))}>
+					<Button
+						color="warning"
+						onClick={() => dispatch(markUnread(message.id))}>
 						Mark as unread
 					</Button>
 				</div>
 
-				<h2>Subject: {message?.subject}<p className={classes.date}>{message.date}</p> </h2>
+				<h2>
+					Subject: {message?.subject}
+					<p className={classes.date}>{message.date}</p>{' '}
+				</h2>
 
 				<div className={classes.messageInfoContainer}>
 					<div className={classes.messageInfo}>
 						<img
 							src={message?.avatar}
 							height={45}
-							width={45}
+							// width={45}
 							alt=""
 						/>
 						<div className={classes.messageInfoContent}>
@@ -63,14 +77,17 @@ const Message = () => {
 						</div>
 					</div>
 					<div className={classes.smallMenu}>
-						<Button startIcon={<DownloadIcon />}>Download .eml file</Button>
+						<Button
+							onClick={() => console.log(message.eml)}
+							href={message.eml}
+							startIcon={<DownloadIcon />}>
+							Download .eml file
+						</Button>
 						<MessageItemMenu id={message.id} />
 					</div>
 				</div>
 
-				<main>
-					{message.payload}
-				</main>
+				<main className={classes.mainContent}>{message.payload as ReactNode}</main>
 			</div>
 		);
 	else {

@@ -1,5 +1,7 @@
 declare module '*.scss';
 declare module '*.sass';
+declare module '*.eml';
+
 
 declare interface User {
 	email: string | null;
@@ -12,11 +14,12 @@ declare interface Message {
 	from: string;
 	sender: string;
 	to: string | null;
-	payload: string;
+	payload: unknown;
 	date: string;
 	type: BoxState;
 	read: boolean;
 	favorite: boolean;
+	eml: string
     
 	avatar?: string;
 }

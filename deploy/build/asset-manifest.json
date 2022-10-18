@@ -1,18 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.e3ea2e71.css",
-    "main.js": "/static/js/main.9483258e.js",
-    "static/media/gmail.svg": "/static/media/gmail.2c70fa80e7595c831171e23d3d580539.svg",
+    "main.css": "/static/css/main.8562665d.css",
+    "main.js": "/static/js/main.b6fad1cc.js",
+    "static/media/Youtube.png": "/static/media/Youtube.6236523625ce7475f337.png",
+    "static/media/MailRu.svg": "/static/media/MailRu.c02731c6ad7b7022ff1ecbfde62ce696.svg",
     "static/media/Google.svg": "/static/media/Google.9a7800d06783d80a1c12249a8ca58e9d.svg",
     "index.html": "/index.html",
     "static/media/Yandex.svg": "/static/media/Yandex.9999668a353c76b0d21f76bd38533a51.svg",
     "static/media/Youtube.svg": "/static/media/Youtube.ebcd0af7c88aa3f9f9fe80775da990b1.svg",
     "static/media/Vk.svg": "/static/media/Vk.86345a35f765cd9eef1c714a81de36ae.svg",
-    "main.e3ea2e71.css.map": "/static/css/main.e3ea2e71.css.map",
-    "main.9483258e.js.map": "/static/js/main.9483258e.js.map"
+    "static/media/google.eml": "/static/media/google.31d6cfe0d16ae931b73c.eml",
+    "static/media/mailru.eml": "/static/media/mailru.31d6cfe0d16ae931b73c.eml",
+    "static/media/vk.eml": "/static/media/vk.31d6cfe0d16ae931b73c.eml",
+    "static/media/yandex.eml": "/static/media/yandex.31d6cfe0d16ae931b73c.eml",
+    "static/media/youtube.eml": "/static/media/youtube.31d6cfe0d16ae931b73c.eml",
+    "main.8562665d.css.map": "/static/css/main.8562665d.css.map",
+    "main.b6fad1cc.js.map": "/static/js/main.b6fad1cc.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3ea2e71.css",
-    "static/js/main.9483258e.js"
+    "static/css/main.8562665d.css",
+    "static/js/main.b6fad1cc.js"
   ]
 }

@@ -15,7 +15,7 @@ const MessageItem = ({
 	from,
 	read,
 	date,
-	avatar
+	avatar,
 }: {
 	id: number;
 	subject: string;
@@ -37,8 +37,6 @@ const MessageItem = ({
 		navigate(`/app/${id}`);
 	};
 
-	
-
 	return (
 		<Button fullWidth onClick={onMessageClickHandler}>
 			<div className={classes.messageItem}>
@@ -49,7 +47,11 @@ const MessageItem = ({
 					<div>
 						<img src={avatar} width={45} alt="" />
 					</div>
-					<div className={classes.from}>{from}</div>
+					<div
+						style={!read ? { fontWeight: 'bold' } : undefined}
+						className={classes.from}>
+						{from}
+					</div>
 					<div>
 						{!message?.favorite ? (
 							<BookmarkBorderRoundedIcon />
@@ -57,7 +59,9 @@ const MessageItem = ({
 							<BookmarkRoundedIcon />
 						)}
 					</div>
-					<div>{subject}</div>
+					<div style={!read ? { fontWeight: 'bold' } : undefined}>
+						{subject}
+					</div>
 					{/* <div>{text}</div> */}
 				</div>
 				<div>
