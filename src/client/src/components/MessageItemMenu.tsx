@@ -4,17 +4,19 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { ClickAwayListener } from '@mui/material';
-import { useAppDispatch } from '../store/hooks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
 	addToFavorites,
 	addToTrash,
 	addToSpam,
+	addToInbox,
 } from '../store/slices/messageSlice';
 
 const enum MessageActions {
-    Favorite = 1,
-    Delete,
-    Spam
+	Favorite = 1,
+	Delete,
+	Spam,
+	Inbox,
 }
 
 export default function MessageItemMenu({ id }: { id: number }) {
@@ -24,10 +26,13 @@ export default function MessageItemMenu({ id }: { id: number }) {
 		setAnchorEl(event.currentTarget);
 	};
 
+	const messageType = useAppSelector(
+		state => state.messages.find(message => message.id === id)?.type,
+	);
+
 	const dispatch = useAppDispatch();
 
 	const handleClose = (action: number) => {
-
 		switch (action) {
 		case MessageActions.Favorite:
 			dispatch(addToFavorites(id));
@@ -37,6 +42,9 @@ export default function MessageItemMenu({ id }: { id: number }) {
 			break;
 		case MessageActions.Spam:
 			dispatch(addToSpam(id));
+			break;
+		case MessageActions.Inbox:
+			dispatch(addToInbox(id));
 			break;
 		default:
 			break;
@@ -50,17 +58,37 @@ export default function MessageItemMenu({ id }: { id: number }) {
 				<Button onClick={handleClick}>
 					<MoreVertIcon />
 				</Button>
-				<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-					<MenuItem onClick={() => handleClose(MessageActions.Favorite)}>
-					Favorite
-					</MenuItem>
-					<MenuItem onClick={() => handleClose(MessageActions.Delete)}>
-					Delete
-					</MenuItem>
-					<MenuItem onClick={() => handleClose(MessageActions.Spam)}>
-					Spam
-					</MenuItem>
-				</Menu>
+				{messageType === 'inbox' ? (
+					<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+						<MenuItem
+							onClick={() =>
+								handleClose(MessageActions.Favorite)
+							}>
+							Favorite
+						</MenuItem>
+						<MenuItem
+							onClick={() => handleClose(MessageActions.Delete)}>
+							Delete
+						</MenuItem>
+						<MenuItem
+							onClick={() => handleClose(MessageActions.Spam)}>
+							Spam
+						</MenuItem>
+					</Menu>
+				) : (
+					<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+						<MenuItem
+							onClick={() =>
+								handleClose(MessageActions.Inbox)
+							}>
+							Reestablish
+						</MenuItem>
+						<MenuItem
+							onClick={() => handleClose(MessageActions.Favorite)}>
+							Favorite
+						</MenuItem>
+					</Menu>
+				)}
 			</div>
 		</ClickAwayListener>
 	);

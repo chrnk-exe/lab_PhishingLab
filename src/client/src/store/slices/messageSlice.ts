@@ -65,6 +65,16 @@ export const messagesSlice = createSlice({
 		},
 		markAllAsRead: (state) => {
 			return state.map(message => ({ ...message, read: true }));
+		},
+		addToInbox: (state, action: PayloadAction<number>) => {
+			return state.map(message => {
+				if (message.id === action.payload) {
+					return {
+						...message,
+						type: 'inbox' as BoxState,
+					};
+				} else return message;
+			});
 		}
 	},
 });
@@ -76,6 +86,7 @@ export const {
 	addToTrash,
 	markRead,
 	markAllAsRead,
-	markUnread
+	markUnread,
+	addToInbox
 } = messagesSlice.actions;
 export default messagesSlice.reducer;
