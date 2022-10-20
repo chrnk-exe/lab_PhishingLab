@@ -10,6 +10,29 @@ const FilteredMessagesBy = ({
 	filterArg?: BoxState;
 	messages: Message[];
 }) => {
+	if(filterArg === 'favorite'){
+		return (
+			<section id={classes.messages}>
+				{messages.filter(message => message.favorite).map(item => (
+					<div
+						className={classes.messages}
+						key={item.id}>
+						<MessageItem
+							id={item.id}
+							subject={item.subject}
+							from={item.from}
+							read={item.read}
+							date={item.date}
+							avatar={item.avatar || ''}
+						/>
+						<div onClick={e => e.stopPropagation()}>
+							<MessageItemMenu id={item.id} />
+						</div>
+					</div>
+				))}
+			</section>
+		);
+	} 
 	if(filterArg){
 		return (
 			<section id={classes.messages}>

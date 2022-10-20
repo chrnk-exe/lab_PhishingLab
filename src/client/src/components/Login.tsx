@@ -32,7 +32,7 @@ const Login = () => {
 					<h2>Login</h2>
 					<TextField
 						fullWidth
-						value={user.email}
+						value={user.email || ''}
 						label={'Email'}
 						required
 						onChange={e => {

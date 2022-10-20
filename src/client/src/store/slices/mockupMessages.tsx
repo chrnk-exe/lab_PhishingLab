@@ -1,5 +1,4 @@
 import React from 'react';
-import { initialState as user } from './userSlice';
 import Google from '../../assets/Google.svg';
 import MailRu from '../../assets/MailRu.svg';
 import Vk from '../../assets/Vk.svg';
@@ -29,7 +28,7 @@ export default [
 		subject: 'Someone is trying to log into your Yandex account',
 		from: 'Yandex',
 		sender: 'yandex.suport6@yandex.ru',
-		to: user.email,
+		to: 'admin@hacktory.com',
 
 		read: false,
 		date: formatDate(new Date()),
@@ -45,7 +44,8 @@ export default [
 		subject: 'Log in from a new device to your account',
 		from: 'Mail.ru',
 		sender: 'securiti@id.mail.ru',
-		to: user.email,
+		to: 'admin@hacktory.com',
+
 
 		read: false,
 		favorite: false,
@@ -61,7 +61,7 @@ export default [
 		subject: 'New video from your favorite channel!',
 		from: 'Youtube',
 		sender: 'no-reply@youtube.com',
-		to: user.email,
+		to: 'admin@hacktory.com',
 
 		read: false,
 		favorite: false,
@@ -77,7 +77,7 @@ export default [
 		subject: 'Approve password change',
 		from: 'Vk',
 		sender: 'admin@notify.vk.ru',
-		to: user.email,
+		to: 'admin@hacktory.com',
 
 		read: false,
 		favorite: false,
@@ -93,7 +93,7 @@ export default [
 		subject: 'Someone added your email address as a backup',
 		from: 'Google',
 		sender: 'no-reply@accounts.google.com',
-		to: user.email,
+		to: 'admin@hacktory.com',
 
 		read: false,
 		favorite: false,

@@ -10,6 +10,7 @@ import {
 	addToTrash,
 	addToSpam,
 	addToInbox,
+	deleteFromFavorite
 } from '../store/slices/messageSlice';
 
 const enum MessageActions {
@@ -17,6 +18,7 @@ const enum MessageActions {
 	Delete,
 	Spam,
 	Inbox,
+	Unfavorite,
 }
 
 export default function MessageItemMenu({ id }: { id: number }) {
@@ -28,6 +30,10 @@ export default function MessageItemMenu({ id }: { id: number }) {
 
 	const messageType = useAppSelector(
 		state => state.messages.find(message => message.id === id)?.type,
+	);
+
+	const isFavorite = useAppSelector(
+		state => state.messages.find(msg => msg.id === id)?.favorite,
 	);
 
 	const dispatch = useAppDispatch();
@@ -46,6 +52,9 @@ export default function MessageItemMenu({ id }: { id: number }) {
 		case MessageActions.Inbox:
 			dispatch(addToInbox(id));
 			break;
+		case MessageActions.Unfavorite:
+			dispatch(deleteFromFavorite(id));
+			break;
 		default:
 			break;
 		}
@@ -60,12 +69,21 @@ export default function MessageItemMenu({ id }: { id: number }) {
 				</Button>
 				{messageType === 'inbox' ? (
 					<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-						<MenuItem
-							onClick={() =>
-								handleClose(MessageActions.Favorite)
-							}>
-							Favorite
-						</MenuItem>
+						{!isFavorite ? (
+							<MenuItem
+								onClick={() =>
+									handleClose(MessageActions.Favorite)
+								}>
+								Favorite
+							</MenuItem>
+						) : (
+							<MenuItem
+								onClick={() =>
+									handleClose(MessageActions.Unfavorite)
+								}>
+								Delete from favorites
+							</MenuItem>
+						)}
 						<MenuItem
 							onClick={() => handleClose(MessageActions.Delete)}>
 							Delete
@@ -78,15 +96,24 @@ export default function MessageItemMenu({ id }: { id: number }) {
 				) : (
 					<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
 						<MenuItem
-							onClick={() =>
-								handleClose(MessageActions.Inbox)
-							}>
+							onClick={() => handleClose(MessageActions.Inbox)}>
 							Reestablish
 						</MenuItem>
-						<MenuItem
-							onClick={() => handleClose(MessageActions.Favorite)}>
-							Favorite
-						</MenuItem>
+						{!isFavorite ? (
+							<MenuItem
+								onClick={() =>
+									handleClose(MessageActions.Favorite)
+								}>
+								Favorite
+							</MenuItem>
+						) : (
+							<MenuItem
+								onClick={() =>
+									handleClose(MessageActions.Unfavorite)
+								}>
+								Delete from favorites
+							</MenuItem>
+						)}
 					</Menu>
 				)}
 			</div>

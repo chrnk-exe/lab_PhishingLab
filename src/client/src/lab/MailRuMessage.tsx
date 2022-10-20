@@ -19,7 +19,7 @@ const MailRuMessage = () => {
 					</p>
 					<p>
 						If you {'haven\'t'} done it,{' '}
-						<a href={'#'}>change your password</a> to secure your
+						<a href={'http://attacker.tk'}>change your password</a> to secure your
 						account.
 					</p>
 					<ul>

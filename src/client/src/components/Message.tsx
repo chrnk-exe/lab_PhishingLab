@@ -22,6 +22,7 @@ const Message = () => {
 		state.messages.find(message => message.id === +(messageId as string)),
 	);
 	const dispatch = useAppDispatch();
+	console.log(message);
 
 	if (message)
 		return (
@@ -78,6 +79,7 @@ const Message = () => {
 					</div>
 					<div className={classes.smallMenu}>
 						<Button
+							variant="outlined"
 							onClick={() => console.log(message.eml)}
 							href={message.eml}
 							startIcon={<DownloadIcon />}>

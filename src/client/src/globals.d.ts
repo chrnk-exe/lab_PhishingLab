@@ -4,8 +4,8 @@ declare module '*.eml';
 
 
 declare interface User {
-	email: string | null;
-	password: string | null;
+	email: string | null | undefined;
+	password: string | null | undefined;
 }
 
 declare interface Message {

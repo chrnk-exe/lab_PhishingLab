@@ -4,8 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export const initialState: User = (JSON.parse(
 	window.sessionStorage.getItem('user') as string,
 ) as User) || {
-	email: null,
-	password: null,
+	email: undefined,
+	password: undefined,
 };
 
 export const userSlice = createSlice({
@@ -16,10 +16,10 @@ export const userSlice = createSlice({
 			return action.payload;
 		},
 		setUserEmail: (state, action: PayloadAction<string>) => {
-			state.email = action.payload || null;
+			state.email = action.payload;
 		},
 		setUserPassword: (state, action: PayloadAction<string>) => {
-			state.password = action.payload || null;
+			state.password = action.payload;
 		}
 	},
 });

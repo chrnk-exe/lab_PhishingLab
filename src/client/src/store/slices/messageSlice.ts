@@ -28,7 +28,6 @@ export const messagesSlice = createSlice({
 					return {
 						...message,
 						favorite: true,
-						type: 'favorite' as BoxState,
 					};
 				} else return message;
 			});
@@ -75,7 +74,17 @@ export const messagesSlice = createSlice({
 					};
 				} else return message;
 			});
-		}
+		},
+		deleteFromFavorite: (state, action: PayloadAction<number>) => {
+			return state.map(message => {
+				if (message.id === action.payload) {
+					return {
+						...message,
+						favorite: false
+					};
+				} else return message;
+			});
+		},
 	},
 });
 
@@ -87,6 +96,7 @@ export const {
 	markRead,
 	markAllAsRead,
 	markUnread,
-	addToInbox
+	addToInbox,
+	deleteFromFavorite
 } = messagesSlice.actions;
 export default messagesSlice.reducer;

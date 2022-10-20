@@ -11,6 +11,7 @@ import boxStates from '../boxStates';
 const AppRoutes = () => {
 	const user = useAppSelector(state => state.user);
 	const messages = useAppSelector(state => state.messages);
+	console.log(user.email);
 
 	return (
 		<div>

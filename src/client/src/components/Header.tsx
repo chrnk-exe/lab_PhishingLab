@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from '../styles/Header.module.sass';
-import logo from '../assets/logo.png';
 import { Button, ButtonGroup } from '@mui/material';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -20,7 +19,6 @@ const Header = () => {
 	return (
 		<div className={classes.header}>
 			<section className={classes.headerItem}>
-				<img src={logo} height={50} width={50} alt="" />
 				<h2>Hacktory@mail</h2>
 				<ButtonGroup variant="text" size="large">
 					<Button
