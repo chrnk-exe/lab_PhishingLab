@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './styles/Vk.module.sass';
 import logo from '../assets/vkmessage.png';
+import WarningAlert from './WarningAlert';
 
 const VkMessage = () => {
+	const [warning, setWarning] = useState(false);
+
 	return (
 		<div className={classes.message}>
 			<header className={classes.logo}>
@@ -21,11 +24,16 @@ const VkMessage = () => {
 						<strong>urgently</strong> need to fill out your account
 						information here:
 					</p>
-					<form action={'#'}>
-						<button type="submit" className={classes.button}>
+					<form action={''}>
+						<button
+							onClick={(e) => {e.preventDefault(); setWarning(true);}}
+							className={classes.button}>
 							Click here to verify your account
 						</button>
 					</form>
+					{warning ? (
+						<WarningAlert offFunction={() => setWarning(false)} />
+					) : null}
 				</div>
 			</main>
 			<footer className={classes.footer}>

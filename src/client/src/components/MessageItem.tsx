@@ -41,16 +41,18 @@ const MessageItem = ({
 		<Button fullWidth onClick={onMessageClickHandler}>
 			<div className={classes.messageItem}>
 				<div className={classes.content}>
-					<div style={{
-						paddingTop: '6px',
-						alignSelf: 'center'
-					}}>
+					<div
+						style={{
+							paddingTop: '6px',
+							alignSelf: 'center',
+						}}>
 						{!read ? <CircleRoundedIcon /> : <CircleOutlinedIcon />}
 					</div>
-					<div style={{
-						paddingTop: '6px',
-						alignSelf: 'center'
-					}}>
+					<div
+						style={{
+							paddingTop: '6px',
+							alignSelf: 'center',
+						}}>
 						<img src={avatar} width={40} alt="" />
 					</div>
 					<div

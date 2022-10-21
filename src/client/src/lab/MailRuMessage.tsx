@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../assets/mailrumessage.png';
 import classes from './styles/MailRu.module.sass';
+import WarningAlert from './WarningAlert';
 
 const MailRuMessage = () => {
+	const [warning, setWarning] = useState(false);
+
 	return (
 		<div className={classes.message}>
 			<header className={classes.logo}>
@@ -19,9 +22,15 @@ const MailRuMessage = () => {
 					</p>
 					<p>
 						If you {'haven\'t'} done it,{' '}
-						<a href={'http://attacker.tk'}>change your password</a> to secure your
+						<a onClick={(e) => {
+							e.preventDefault();
+							setWarning(true);
+						}} href={'http://attacker.tk'}>change your password</a> to secure your
 						account.
 					</p>
+					{warning ? (
+						<WarningAlert offFunction={() => setWarning(false)} />
+					) : null}
 					<ul>
 						<li>Time: today at 03:18</li>
 						<li>

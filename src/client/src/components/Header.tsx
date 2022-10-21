@@ -5,6 +5,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAppDispatch } from '../store/hooks';
 import { markAllAsRead } from '../store/slices/messageSlice';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const Header = () => {
 	const logoutHandler = () => {
@@ -19,7 +20,10 @@ const Header = () => {
 	return (
 		<div className={classes.header}>
 			<section className={classes.headerItem}>
-				<h2>Hacktory@mail</h2>
+				<h2>
+					<MailOutlineIcon sx={{ height: '40px', width: '40px' }} />
+					Hacktory Mail Service
+				</h2>
 				<ButtonGroup variant="text" size="large">
 					<Button
 						onClick={readHandler}

@@ -11,7 +11,6 @@ import boxStates from '../boxStates';
 const AppRoutes = () => {
 	const user = useAppSelector(state => state.user);
 	const messages = useAppSelector(state => state.messages);
-	console.log(user.email);
 
 	return (
 		<div>
@@ -29,13 +28,7 @@ const AppRoutes = () => {
 				<Route path={'/login'} element={<Login />} />
 				<Route
 					path={'/app'}
-					element={
-						user.email ? (
-							<App />
-						) : (
-							<Navigate to={'/login'} />
-						)
-					}>
+					element={user.email ? <App /> : <Navigate to={'/login'} />}>
 					<Route
 						index
 						element={<FilteredMessagesBy messages={messages} />}

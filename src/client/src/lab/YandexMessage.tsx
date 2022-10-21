@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './styles/Yandex.module.sass';
 import logo from '../assets/yandexid.png';
+import WarningAlert from './WarningAlert';
 
 const YandexMessage = () => {
+	const [warning, setWarning] = useState(false);
+
 	return (
 		<div className={classes.message}>
 			<header className={classes.logo}>
@@ -13,8 +16,8 @@ const YandexMessage = () => {
 					<p>Hello, dear user!</p>
 					<p>
 						Someone has entered the correct password for your Yandex
-						account <strong>a***</strong>. Here is the
-						information that we have:
+						account <strong>a***</strong>. Here is the information
+						that we have:
 					</p>
 					<ul>
 						<li>Location: Saint Petersburg</li>
@@ -22,9 +25,19 @@ const YandexMessage = () => {
 					</ul>
 					<p>
 						{'If this wasn\'t you, please follow this link to our ('}
-						<a href="http://attacker.tk">
-							https://yandex.com/support/passport/troubleshooting/hacked.html 
+						<a
+							onClick={e => {
+								e.preventDefault();
+								setWarning(true);
+							}}
+							href="http://attacker.tk">
+							https://yandex.com/support/passport/troubleshooting/hacked.html
 						</a>
+						{warning ? (
+							<WarningAlert
+								offFunction={() => setWarning(false)}
+							/>
+						) : null}
 						{') for instructions on securing your account.'}
 					</p>
 					<p>

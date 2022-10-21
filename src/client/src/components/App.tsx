@@ -13,9 +13,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-import CreateIcon from '@mui/icons-material/Create';
+// import CreateIcon from '@mui/icons-material/Create';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
-import SendIcon from '@mui/icons-material/Send';
+// import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
@@ -73,7 +73,7 @@ function App() {
 				<Paper elevation={8} className={classes.mailApp}>
 					<section id={classes.mailBox}>
 						<List className={classes.list}>
-							<ListItem>
+							{/* <ListItem>
 								<ListItemButton
 									selected={selected === AppActions.Compose}
 									onClick={e => handleListItemClick(e, AppActions.Compose)}>
@@ -82,7 +82,7 @@ function App() {
 									</ListItemIcon>
 									<ListItemText>Compose</ListItemText>
 								</ListItemButton>
-							</ListItem>
+							</ListItem> */}
 							<ListItem>
 								<ListItemButton
 									selected={selected === AppActions.Inbox}
@@ -103,7 +103,7 @@ function App() {
 									<ListItemText>Favorites</ListItemText>
 								</ListItemButton>
 							</ListItem>
-							<ListItem>
+							{/* <ListItem>
 								<ListItemButton
 									selected={selected === AppActions.Sent}
 									onClick={e => handleListItemClick(e, AppActions.Sent)}>
@@ -112,7 +112,7 @@ function App() {
 									</ListItemIcon>
 									<ListItemText>Sent</ListItemText>
 								</ListItemButton>
-							</ListItem>
+							</ListItem> */}
 							<ListItem>
 								<ListItemButton
 									selected={selected === AppActions.Trash}

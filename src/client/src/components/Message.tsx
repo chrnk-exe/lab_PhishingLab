@@ -22,7 +22,6 @@ const Message = () => {
 		state.messages.find(message => message.id === +(messageId as string)),
 	);
 	const dispatch = useAppDispatch();
-	console.log(message);
 
 	if (message)
 		return (
@@ -89,7 +88,9 @@ const Message = () => {
 					</div>
 				</div>
 
-				<main className={classes.mainContent}>{message.payload as ReactNode}</main>
+				<main className={classes.mainContent}>
+					{message.payload as ReactNode}
+				</main>
 			</div>
 		);
 	else {

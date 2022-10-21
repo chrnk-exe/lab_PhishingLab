@@ -10,7 +10,7 @@ const YoutubeMessage = () => {
 				<img src={logo} height={100} alt="Youtube Logo SVG" />
 			</header>
 			<main className={classes.content}>
-				<p>
+				<div>
 					<p>
 						Hello <a href={'#'}>admin@hacktory.com</a>!
 					</p>
@@ -18,7 +18,7 @@ const YoutubeMessage = () => {
 						Your favorite YouTube channel has released a new video
 						today!
 					</p>
-				</p>
+				</div>
 				<br />
 				<h3>Your favorite channel is</h3>
 				<div className={classes.ChannelName}>

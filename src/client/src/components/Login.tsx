@@ -5,6 +5,7 @@ import { Paper, Button, Link } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import TextFieldPassword from './TextFieldPassword';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { setUserEmail, setUserPassword } from '../store/slices/userSlice';
 
 const Login = () => {
@@ -29,7 +30,12 @@ const Login = () => {
 		<div className={classes.login}>
 			<Paper className={classes.Paper} elevation={5}>
 				<form>
-					<h2>Login</h2>
+					<h2>
+						<MailOutlineIcon
+							sx={{ height: '40px', width: '40px' }}
+						/>
+						Hacktory Mail Service
+					</h2>
 					<TextField
 						fullWidth
 						value={user.email || ''}
