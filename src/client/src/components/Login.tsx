@@ -16,8 +16,8 @@ const Login = () => {
 
 	const loginHandler = () => {
 		if (
-			user.email === 'admin@hacktory.com' &&
-			user.password === 'password'
+			user.email?.trim() === 'admin@hacktory.com' &&
+			user.password?.trim() === 'password'
 		) {
 			window.sessionStorage.setItem('user', JSON.stringify(user));
 			navigate('/app');

