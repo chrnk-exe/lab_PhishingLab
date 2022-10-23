@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { Button } from '@mui/material';
 import classes from '../styles/Message.module.sass';
@@ -9,6 +9,7 @@ import ShortcutIcon from '@mui/icons-material/Shortcut';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DownloadIcon from '@mui/icons-material/Download';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import {
 	addToSpam,
@@ -23,10 +24,18 @@ const Message = () => {
 	);
 	const dispatch = useAppDispatch();
 
+	const navigate = useNavigate();
+
 	if (message)
 		return (
 			<div className={classes.message}>
 				<div className={classes.messageMenu}>
+					<Button
+						color="warning"
+						startIcon={<ArrowBackIcon />}
+						onClick={() => navigate(-1)}>
+						Back
+					</Button>
 					<Button
 						color="warning"
 						startIcon={<ReplyIcon />}
