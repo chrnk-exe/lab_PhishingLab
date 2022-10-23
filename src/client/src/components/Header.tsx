@@ -6,6 +6,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useAppDispatch } from '../store/hooks';
 import { markAllAsRead } from '../store/slices/messageSlice';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { useNavigate } from 'react-router';
 
 const Header = () => {
 	const logoutHandler = () => {
@@ -16,11 +17,12 @@ const Header = () => {
 	const dispatch = useAppDispatch();
 
 	const readHandler = () => dispatch(markAllAsRead());
+	const navigate = useNavigate();
 
 	return (
 		<div className={classes.header}>
 			<section className={classes.headerItem}>
-				<h2>
+				<h2 onClick={() => navigate('/app')}>
 					<MailOutlineIcon sx={{ height: '40px', width: '40px' }} />
 					Hacktory Mail Service
 				</h2>
