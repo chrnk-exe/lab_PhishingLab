@@ -1,8 +1,0 @@
-{
-  "short_name": "Hacktory",
-  "name": "Hacktory mail app",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#eeeeee"
-}
