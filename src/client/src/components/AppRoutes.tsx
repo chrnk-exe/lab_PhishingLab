@@ -25,10 +25,10 @@ const AppRoutes = () => {
 						)
 					}
 				/>
-				<Route path={'/login'} element={<Login />} />
+				<Route path={'/auth'} element={<Login />} />
 				<Route
 					path={'/app'}
-					element={user.email ? <App /> : <Navigate to={'/login'} />}>
+					element={user.email ? <App /> : <Navigate to={'/auth'} />}>
 					<Route
 						index
 						element={<FilteredMessagesBy messages={messages} />}

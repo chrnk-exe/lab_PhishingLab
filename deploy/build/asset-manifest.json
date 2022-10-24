@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3204d1f9.css",
+    "main.js": "/static/js/main.3fdc3bbc.js",
+    "static/media/Youtube.png": "/static/media/Youtube.6236523625ce7475f337.png",
+    "static/media/youtube.eml": "/static/media/youtube.8a771f08c89106108c63.eml",
+    "static/media/mailru.eml": "/static/media/mailru.a376cea7cf739e90cce3.eml",
+    "static/media/google.eml": "/static/media/google.2fbfb81222fae6292ccf.eml",
+    "static/media/yandex.eml": "/static/media/yandex.abd4ae3a12abfa1a2f29.eml",
+    "static/media/vk.eml": "/static/media/vk.ea1f3fe91f7d17a1f36a.eml",
+    "static/media/MailRu.svg": "/static/media/MailRu.c02731c6ad7b7022ff1ecbfde62ce696.svg",
+    "static/media/Google.svg": "/static/media/Google.9a7800d06783d80a1c12249a8ca58e9d.svg",
+    "index.html": "/index.html",
+    "static/media/Yandex.svg": "/static/media/Yandex.9999668a353c76b0d21f76bd38533a51.svg",
+    "static/media/Youtube.svg": "/static/media/Youtube.ebcd0af7c88aa3f9f9fe80775da990b1.svg",
+    "static/media/Vk.svg": "/static/media/Vk.86345a35f765cd9eef1c714a81de36ae.svg",
+    "main.3204d1f9.css.map": "/static/css/main.3204d1f9.css.map",
+    "main.3fdc3bbc.js.map": "/static/js/main.3fdc3bbc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3204d1f9.css",
+    "static/js/main.3fdc3bbc.js"
+  ]
+}
