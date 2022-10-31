@@ -7,12 +7,6 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo systemctl enable docker
 
-# cd /home/admin/app/
-
-# download app
-mkdir -p App
-git clone https://github.com/chrnk-exe/lab_PhishingLab ./App
-cd App/deploy
 # run docker-compose.yml
 sudo docker build -t dslab .
 sudo docker run -p 80:80 
