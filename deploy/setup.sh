@@ -9,7 +9,7 @@ sudo systemctl enable docker
 
 # run docker-compose.yml
 sudo docker build -t dslab .
-sudo docker run -p -d 80:80 dslab
+sudo docker run -d -p 80:80 dslab
 
 # clear history
 history -c
